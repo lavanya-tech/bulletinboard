@@ -54,7 +54,8 @@ graph TD;
 ```
  
 ## Cookie addition
-   purpose - avoid multiple signin for a single user in the same browser.Cookie stores information regarding the user in the localStorage.There is a limit on the number and size of cookies we can store in the localStorage.Since the login information is stored in the localStorage,even of the user closes the browser,the user's information is reatined in the localStorage of the browser and used when he reopens the website.\
+   purpose - avoid multiple signin for a single user in the same browser.\
+    Cookie helps to store the information related to the user in the localStorage.There is a limit on the number and size of cookies we can use in the localStorage.Since the login information specific to user is stored in the localStorage,even after closing the browser,the user's information is retained in the localStorage of the browser and used when he reopens the website.This way it reduces multiple time signin for a singe user in a single browser.\
    code -
     
 ```javascript
