@@ -28,12 +28,14 @@ _In a single page application,the client loads the whole application at once and
 * _reduce initial network bandwidth._
 ### Suspense component
 Suspense component is wrapped around <Route> component with a fallback attribute that contains the component to be rendered in case of low network bandwidth until the actual component is rendered.\
-`import { Spinner } from "react-bootstrap";`\
-`const Loading = () => {`\
-    `return (<Spinner animation="border" variant="primary" />);`\
-`}`\
-`export default Loading;`\
-`<Suspense fallback={<Loading />}`\
+```javascript
+    import { Spinner } from "react-bootstrap";
+    const Loading = () => {
+    return (<Spinner animation="border" variant="primary" />);
+    }
+    export default Loading;
+    <Suspense fallback={<Loading />}
+```
 
 # Day 3
 ## Objective
@@ -49,4 +51,26 @@ graph TD;
     Signin-->Userpage;
     Userpage-->Logout;
     Logout-->Visitorpage;
+```
+ 
+## Cookie addition
+   purpose - avoid multiple signin for a single user in the same browser.
+   code -
+    
+```javascript
+    const [loggedIn,setLoggedIn] = useState(0);
+    const SigninHandler = (event) => {
+    event.preventDefault();
+    localStorage.setItem('logged','1');
+    setLoggedIn(1);
+    } 
+    const Onsignout = () => {
+    localStorage.setItem('logged','0');
+    setLoggedIn(0);
+    }
+    useEffect(()=>{
+    if (localStorage.getItem("logged") === "1") {
+      setLoggedIn(1);
+    } 
+    });
 ```
