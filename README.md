@@ -74,3 +74,15 @@ graph TD;
     } 
     });
 ```
+### useEffect Hook react
+* purpose - code block in useEffect gets executed when a page is loaded/refreshed/change in the value of dependencies
+* Syntax - `useEffect(()=>{},[dependencies]);`
+* use in this application - The cookie being used in this application needs to be checked every time when the users opens the website and the loggedIn state needs to be updated based on that.But upon change of state of 'LoggedIn',the app component gets re-rendered which makes the application go into an infine loop of render and state change.Hence the we include the code to check cookie in an useEffect hook.
+    
+```mermaid
+graph TD;
+    render_app-->statechange;
+    statechange-->render_app;
+```
+    
+
