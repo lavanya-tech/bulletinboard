@@ -1,6 +1,9 @@
+import { Container } from "react-bootstrap"
+
 const Home = () => {
     return(
-        <h1>this is home page</h1>
+        <Container>
+        <h1>this is home page</h1></Container>
     )
 }
 
