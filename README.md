@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Day 1
+## created react project
+* `npx create-react-app bulletinboard`
+* `cd bulletinboard`
+* Install dependencies\
+`npm install react-bootstrap bootstrap`\
+`npm install react-router-dom`
+* `npm start`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***
 
-## Available Scripts
+# Day 2
+## added navigation component and pages
+* import bootstrap library in app.js or index.js file
+* make components folder
+* create navigation.js file
+* create navbar using react-bootstrap
+* export navbar component and import it in app.js file
+* create files for home page, signin page, signup page, todaysposts page.
+* import BrowserRouter in index.js 
+* _react-router-dom is used for client side navigation.it prevents the default behaviour of the browser to send request to the server and navigates from client side.advantages of client side navigation are reduces network traffic, preserves the state of application, ensures smooth execution or usage_
+* `import {Routes, Route} from 'react-router-dom'`
+* _Routes contain the route elements which further specify the url and corresponsing component whihc has to be rendered upon visiting the url._
+## Lazy loading
+_In a single page application,the client loads the whole application at once and later navigates through it without sending request to the server. But it might happen that the single page application might contain some mostly used(default) components and rarely visited components. Loading the whole application at a time might increase the load time and network bandwidth too. To avoid this, we use lazy loading. Through this, the client loads only the default components intially and sends a server request once for the rarely visited components i.e., the first time they are visited._
+### _Advantages_
+* _reduces initial loading time._
+* _reduce initial network bandwidth._
+### Suspense component
+Suspense component is wrapped around <Route> component with a fallback attribute that contains the component to be rendered in case of low network bandwidth until the actual component is rendered.\
+`import { Spinner } from "react-bootstrap";`\
+`const Loading = () => {`\
+    `return (<Spinner animation="border" variant="primary" />);`\
+`}`\
+`export default Loading;`\
+`<Suspense fallback={<Loading />}`\
 
-In the project directory, you can run:
+# Day 3
+## Objective
+* creating signin and logout component.
+* creating separate pages for user and visitor.
+* Flow (visitor page on opening -> signin -> user page -> logout -> visitor)
+* adding httpcookie to store login activity of the user to remember the user and avoid multiple signins'.
+## app flow
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```mermaid
+graph TD;
+    Visitorpage-->Signin;
+    Signin-->Userpage;
+    Userpage-->Logout;
+    Logout-->Visitorpage;
+```
